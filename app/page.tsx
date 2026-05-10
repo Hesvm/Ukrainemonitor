@@ -10,6 +10,7 @@ import LogoUsageSection from '@/components/sections/LogoUsageSection';
 import SizingSection from '@/components/sections/SizingSection';
 import IconsSection from '@/components/sections/IconsSection';
 import DownloadSection from '@/components/sections/DownloadSection';
+import Footer from '@/components/Footer';
 
 const SECTION_IDS = ['hero', 'logo', 'colors', 'typography', 'logo-usage', 'sizing', 'icons', 'download'];
 
@@ -55,6 +56,7 @@ export default function Home() {
         <SizingSection />
         <IconsSection />
         <DownloadSection />
+        <Footer />
       </main>
     </div>
   );
