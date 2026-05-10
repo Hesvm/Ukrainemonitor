@@ -122,7 +122,7 @@ export default function Sidebar({ activeSection, onCollapse }: Props) {
                   {group}
                 </p>
               )}
-              {collapsed && <div className="my-1" style={{ height: '1px', background: 'var(--border)', margin: '8px 4px' }} />}
+              {collapsed && <div className="my-1" />}
 
               {NAV_ITEMS.filter(item => item.group === group).map((item) => {
                 const isActive = activeSection === item.id;

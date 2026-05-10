@@ -6,7 +6,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="px-14 py-16"
+      className="px-14 py-16 text-center"
       style={{ borderBottom: '1px solid var(--border)' }}
     >
       <p
@@ -25,7 +25,7 @@ export default function HeroSection() {
       </h1>
 
       <p
-        className="font-body text-base leading-relaxed mb-10 max-w-lg"
+        className="font-body text-base leading-relaxed mb-10 max-w-lg mx-auto"
         style={{ color: 'var(--text-muted)' }}
       >
         Ukraine Monitor is a real-time conflict intelligence platform tracking developments
@@ -33,7 +33,7 @@ export default function HeroSection() {
         communication across all channels.
       </p>
 
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-wrap gap-3 justify-center">
         <button
           onClick={downloadBrandMD}
           className="font-mono text-xs uppercase tracking-widest px-5 py-3 transition-colors"
