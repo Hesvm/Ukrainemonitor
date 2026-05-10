@@ -14,7 +14,7 @@ export default function SectionHeader({ eyebrow, title, titleAccent }: Props) {
         {eyebrow}
       </p>
       <h2
-        className="font-display text-2xl uppercase mb-6 tracking-wide"
+        className="font-display text-2xl mb-6 tracking-wide"
         style={{ color: 'var(--text)' }}
       >
         {title}

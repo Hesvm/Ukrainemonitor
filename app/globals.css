@@ -105,4 +105,5 @@ body {
 /* Dystopian always renders at Black (900) weight */
 .font-display {
   font-weight: 900;
+  text-transform: none;
 }

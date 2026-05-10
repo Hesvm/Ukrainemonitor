@@ -55,7 +55,7 @@ export default function TypographySection() {
             <Tag>Wordmark</Tag>
           </div>
           <div
-            className="font-display uppercase leading-none mb-6"
+            className="font-display leading-none mb-6"
             style={{ fontSize: '40px', color: 'var(--text)' }}
           >
             Overnight Strike<br />
@@ -64,9 +64,9 @@ export default function TypographySection() {
           <input
             type="text"
             value={displayText}
-            onChange={(e) => setDisplayText(e.target.value.toUpperCase())}
-            placeholder="TYPE A HEADLINE…"
-            className="w-full font-display uppercase bg-transparent outline-none border-b"
+            onChange={(e) => setDisplayText(e.target.value)}
+            placeholder="Type a headline…"
+            className="w-full font-display bg-transparent outline-none border-b"
             style={{
               fontSize: '32px',
               color: 'var(--text)',
