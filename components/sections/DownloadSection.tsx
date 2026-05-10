@@ -84,30 +84,25 @@ export default function DownloadSection() {
 
         <DownloadCard
           title="Logo SVG Files"
-          sub="All 6 Variants"
-          description="Full-color and mono logo variants for light and dark backgrounds, plus the standalone icon mark. Click any logo in the Logo System section to copy its SVG."
+          sub="11 Variants — Mark · Horizontal · Vertical"
+          description="All 11 variants across Mark, Horizontal, and Vertical lockups. Click any logo in the matrix above to copy or download individual SVG files."
           action={
             <div
-              className="flex items-center gap-3 p-3"
-              style={{ border: '1px solid var(--border)', borderRadius: '2px', background: 'var(--bg)' }}
+              className="font-mono text-[11px] leading-relaxed p-4"
+              style={{
+                border: '1px solid var(--border)',
+                borderRadius: '2px',
+                background: 'var(--bg)',
+                color: 'var(--text-muted)',
+              }}
             >
-              <Image
-                src="/assets/logo/Logo_on_Light.svg"
-                alt="Mark"
-                width={80}
-                height={24}
-                className="block dark:hidden"
-              />
-              <Image
-                src="/assets/logo/Logo_on_Dark.svg"
-                alt="Mark"
-                width={80}
-                height={24}
-                className="hidden dark:block"
-              />
-              <span className="font-mono text-[10px] uppercase tracking-wide" style={{ color: 'var(--text-muted)' }}>
-                /public/assets/logo/
-              </span>
+              {[
+                'mark-color', 'mark-mono-black', 'mark-mono-white',
+                'logo-h-color-light', 'logo-h-color-dark', 'logo-h-mono-black', 'logo-h-mono-white',
+                'logo-v-color-light', 'logo-v-color-dark', 'logo-v-mono-black', 'logo-v-mono-white',
+              ].map((id) => (
+                <div key={id}>{id}</div>
+              ))}
             </div>
           }
         />

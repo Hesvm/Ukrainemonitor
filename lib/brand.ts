@@ -13,14 +13,152 @@ export const statusColors = [
   { hex: '#3B6FD4', label: 'INFO' },
 ] as const;
 
-export const logoVariants = [
-  { id: 'color-light', label: 'Color — Light',  file: '/assets/logo/Logo_on_Light.svg',      bg: '#FFFFFF', dark: false },
-  { id: 'color-dark',  label: 'Color — Dark',   file: '/assets/logo/Logo_on_Dark.svg',       bg: '#0C0C0C', dark: true  },
-  { id: 'mono-light',  label: 'Mono — Light',   file: '/assets/logo/Mono_logo_on_light.svg', bg: '#FFFFFF', dark: false },
-  { id: 'mono-dark',   label: 'Mono — Dark',    file: '/assets/logo/Mono_logo_on_dark.svg',  bg: '#0C0C0C', dark: true  },
-  { id: 'mark-color',  label: 'Mark — Color',   file: '/assets/logo/Mark_color.svg',         bg: '#FFFFFF', dark: false },
-  { id: 'mark-mono',   label: 'Mark — Mono',    file: '/assets/logo/Mark_mono.svg',          bg: '#FFFFFF', dark: false },
-] as const;
+export type LogoType = 'mark' | 'horizontal' | 'vertical'
+export type LogoColor = 'color' | 'mono-black' | 'mono-white'
+export type LogoBg = 'light' | 'dark'
+
+export interface LogoVariant {
+  id: string
+  type: LogoType
+  color: LogoColor
+  bg: LogoBg
+  label: string
+  file: string
+  useOn: string[]
+  minSize: string
+  notes?: string
+}
+
+export const LOGO_VARIANTS: LogoVariant[] = [
+  // MARK ONLY
+  {
+    id: 'mark-color',
+    type: 'mark', color: 'color', bg: 'light',
+    label: 'Mark — Color',
+    file: '/assets/logo/Mark_Color.svg',
+    useOn: ['favicon', 'app-icon', 'avatar', 'loading-spinner', 'social-profile-picture', 'browser-tab'],
+    minSize: '24px',
+    notes: 'Primary mark. Use when space is too small for full lockup (below 160px width).',
+  },
+  {
+    id: 'mark-mono-black',
+    type: 'mark', color: 'mono-black', bg: 'light',
+    label: 'Mark — Mono Black',
+    file: '/assets/logo/Mark_Mono_Black.svg',
+    useOn: ['print-mono', 'emboss', 'stamp', 'watermark-light'],
+    minSize: '24px',
+    notes: 'Use for single-color print, embossing, or light background contexts requiring no color.',
+  },
+  {
+    id: 'mark-mono-white',
+    type: 'mark', color: 'mono-white', bg: 'dark',
+    label: 'Mark — Mono White',
+    file: '/assets/logo/Mark_Mono_White.svg',
+    useOn: ['dark-background', 'watermark-dark', 'reversed'],
+    minSize: '24px',
+    notes: 'Use on dark backgrounds where color mark has insufficient contrast.',
+  },
+  // HORIZONTAL LOCKUP
+  {
+    id: 'logo-h-color-light',
+    type: 'horizontal', color: 'color', bg: 'light',
+    label: 'Horizontal — Color / Light',
+    file: '/assets/logo/Logo_H_Color_Light.svg',
+    useOn: ['website-header', 'email-header', 'presentation-cover', 'light-background'],
+    minSize: '160px wide',
+    notes: 'Primary lockup. Default choice for most digital contexts on light backgrounds.',
+  },
+  {
+    id: 'logo-h-color-dark',
+    type: 'horizontal', color: 'color', bg: 'dark',
+    label: 'Horizontal — Color / Dark',
+    file: '/assets/logo/Logo_H_Color_Dark.svg',
+    useOn: ['dark-header', 'dark-hero', 'dark-email', 'dark-presentation'],
+    minSize: '160px wide',
+    notes: 'Primary lockup for dark surfaces. Color mark, white wordmark.',
+  },
+  {
+    id: 'logo-h-mono-black',
+    type: 'horizontal', color: 'mono-black', bg: 'light',
+    label: 'Horizontal — Mono Black',
+    file: '/assets/logo/Logo_H_Mono_Black.svg',
+    useOn: ['print-mono', 'newspaper', 'legal-document', 'fax', 'single-color-print'],
+    minSize: '160px wide',
+    notes: 'Single-color print. Use when color reproduction is not available.',
+  },
+  {
+    id: 'logo-h-mono-white',
+    type: 'horizontal', color: 'mono-white', bg: 'dark',
+    label: 'Horizontal — Mono White',
+    file: '/assets/logo/Logo_H_Mono_White.svg',
+    useOn: ['dark-print', 'dark-slide', 'reversed-mono'],
+    minSize: '160px wide',
+    notes: 'White-on-dark single color. For dark print or slide backgrounds.',
+  },
+  // VERTICAL LOCKUP
+  {
+    id: 'logo-v-color-light',
+    type: 'vertical', color: 'color', bg: 'light',
+    label: 'Vertical — Color / Light',
+    file: '/assets/logo/Logo_V_Color_Light.svg',
+    useOn: ['square-format', 'poster', 'thumbnail', 'app-store-banner', 'social-card'],
+    minSize: '120px wide',
+    notes: 'Use when the layout is square or tall. Mark centered above wordmark.',
+  },
+  {
+    id: 'logo-v-color-dark',
+    type: 'vertical', color: 'color', bg: 'dark',
+    label: 'Vertical — Color / Dark',
+    file: '/assets/logo/Logo_V_Color_Dark.svg',
+    useOn: ['dark-poster', 'dark-thumbnail', 'og-image', 'dark-social-card'],
+    minSize: '120px wide',
+    notes: 'Dark background vertical lockup. Used in the OG image.',
+  },
+  {
+    id: 'logo-v-mono-black',
+    type: 'vertical', color: 'mono-black', bg: 'light',
+    label: 'Vertical — Mono Black',
+    file: '/assets/logo/Logo_V_Mono_Black.svg',
+    useOn: ['print-square', 'merchandise', 'embroidery'],
+    minSize: '120px wide',
+  },
+  {
+    id: 'logo-v-mono-white',
+    type: 'vertical', color: 'mono-white', bg: 'dark',
+    label: 'Vertical — Mono White',
+    file: '/assets/logo/Logo_V_Mono_White.svg',
+    useOn: ['dark-print-square', 'dark-merchandise'],
+    minSize: '120px wide',
+  },
+]
+
+export const SEMANTIC_MAP: Record<string, string> = {
+  'favicon':               'mark-color',
+  'browser-tab':           'mark-color',
+  'app-icon':              'mark-color',
+  'apple-touch-icon':      'mark-color',
+  'pwa-icon':              'mark-color',
+  'social-profile-pic':    'mark-color',
+  'avatar':                'mark-color',
+  'website-header-light':  'logo-h-color-light',
+  'website-header-dark':   'logo-h-color-dark',
+  'email-header':          'logo-h-color-light',
+  'email-footer':          'logo-h-mono-black',
+  'presentation-light':    'logo-h-color-light',
+  'presentation-dark':     'logo-h-color-dark',
+  'og-image':              'logo-v-color-dark',
+  'twitter-card':          'logo-v-color-dark',
+  'social-card-light':     'logo-v-color-light',
+  'print-color':           'logo-h-color-light',
+  'print-mono':            'logo-h-mono-black',
+  'dark-hero':             'logo-h-color-dark',
+  'poster':                'logo-v-color-light',
+  'dark-poster':           'logo-v-color-dark',
+  'merchandise':           'logo-v-mono-black',
+}
+
+// Backward-compat alias (used by older components)
+export const logoVariants = LOGO_VARIANTS
 
 export const typeScale = [
   { level: 'Display',    typeface: 'Dystopian',  size: '42px', weight: '900', usage: 'Hero titles' },

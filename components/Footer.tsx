@@ -3,22 +3,16 @@ import Image from 'next/image';
 export default function Footer() {
   return (
     <footer
-      className="px-14 py-10 flex items-center justify-between"
+      className="px-14 py-12 flex justify-center"
       style={{ borderTop: '1px solid var(--border)' }}
     >
-      <p
-        className="font-mono text-[10px] uppercase tracking-widest"
-        style={{ color: 'var(--text-muted)' }}
-      >
-        Ukraine Monitor · Brand Identity System · 2025
-      </p>
-
+      {/* SVG has fill="black"; dark:invert flips it to white on dark backgrounds */}
       <Image
         src="/assets/Signature.svg"
         alt="Designer signature"
-        width={148}
+        width={123}
         height={25}
-        style={{ opacity: 0.45 }}
+        style={{ opacity: 0.35 }}
         className="dark:invert"
       />
     </footer>
