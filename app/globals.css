@@ -101,3 +101,8 @@ body {
   font-family: var(--font-body);
   min-height: 100vh;
 }
+
+/* Dystopian always renders at Black (900) weight */
+.font-display {
+  font-weight: 900;
+}
