@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Sidebar from '@/components/Sidebar';
 import HeroSection from '@/components/sections/HeroSection';
 import LogoSection from '@/components/sections/LogoSection';
@@ -15,35 +15,37 @@ const SECTION_IDS = ['hero', 'logo', 'colors', 'typography', 'logo-usage', 'sizi
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('hero');
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
-
     SECTION_IDS.forEach((id) => {
       const el = document.getElementById(id);
       if (!el) return;
-
       const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActiveSection(id);
-        },
+        ([entry]) => { if (entry.isIntersecting) setActiveSection(id); },
         { rootMargin: '-30% 0px -65% 0px', threshold: 0 }
       );
       observer.observe(el);
       observers.push(observer);
     });
-
     return () => observers.forEach((o) => o.disconnect());
   }, []);
 
+  const handleCollapse = useCallback((collapsed: boolean) => {
+    setSidebarCollapsed(collapsed);
+  }, []);
+
+  // sidebar width: 64px collapsed, 220px expanded — plus 16px left margin + 8px gap
+  const mainLeft = sidebarCollapsed ? 64 + 16 + 12 : 220 + 16 + 12;
+
   return (
     <div style={{ background: 'var(--bg)', minHeight: '100vh' }}>
-      <Sidebar activeSection={activeSection} />
+      <Sidebar activeSection={activeSection} onCollapse={handleCollapse} />
 
-      {/* Main content — offset for desktop sidebar */}
       <main
-        className="md:ml-[228px] pt-[56px] md:pt-0"
-        style={{ minHeight: '100vh' }}
+        className="pt-[56px] md:pt-4 transition-all duration-300"
+        style={{ marginLeft: `${mainLeft}px` }}
       >
         <HeroSection />
         <LogoSection />
