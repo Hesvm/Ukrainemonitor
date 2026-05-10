@@ -97,7 +97,7 @@ export default function Sidebar({ activeSection, onCollapse }: Props) {
           {/* Wordmark — hidden when collapsed */}
           {!collapsed && (
             <div className="overflow-hidden transition-all duration-300">
-              <p className="font-display text-sm uppercase leading-none" style={{ color: 'var(--text)', fontWeight: 900 }}>
+              <p className="font-display text-sm leading-none" style={{ color: 'var(--text)', fontWeight: 900 }}>
                 Ukraine<br />Monitor
               </p>
               <p

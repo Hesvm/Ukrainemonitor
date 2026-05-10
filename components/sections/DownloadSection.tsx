@@ -113,23 +113,33 @@ export default function DownloadSection() {
         />
 
         <DownloadCard
-          title="Font Files"
-          sub="Dystopian · DM Sans · DM Mono"
-          description="Dystopian (Black, Bold, Regular, Light) is self-hosted in /public/assets/fonts/. DM Sans is self-hosted. DM Mono is loaded from Google Fonts."
+          title="Dystopian Font"
+          sub="Display Typeface · 4 Weights"
+          description="The primary display typeface used for all headlines and the wordmark. Download individual weights as OpenType files."
           action={
-            <a
-              href="https://fonts.google.com/specimen/DM+Mono"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-xs uppercase tracking-widest px-4 py-2.5 text-center block transition-colors"
-              style={{
-                border: '1px solid var(--border)',
-                borderRadius: '2px',
-                color: 'var(--text)',
-              }}
-            >
-              DM Mono on Google Fonts ↗
-            </a>
+            <div className="flex flex-col gap-2">
+              {[
+                { label: 'Dystopian Black', file: 'Dystopian-Black.otf' },
+                { label: 'Dystopian Bold', file: 'Dystopian-Bold.otf' },
+                { label: 'Dystopian Regular', file: 'Dystopian-Regular.otf' },
+                { label: 'Dystopian Light', file: 'Dystopian-Light.otf' },
+              ].map(({ label, file }) => (
+                <a
+                  key={file}
+                  href={`/assets/fonts/${file}`}
+                  download={file}
+                  className="font-mono text-xs uppercase tracking-widest px-4 py-2.5 text-left block transition-colors"
+                  style={{
+                    border: '1px solid var(--border)',
+                    borderRadius: '2px',
+                    color: 'var(--text)',
+                    textDecoration: 'none',
+                  }}
+                >
+                  ↓ {label}
+                </a>
+              ))}
+            </div>
           }
         />
 

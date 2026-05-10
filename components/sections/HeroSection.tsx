@@ -17,7 +17,7 @@ export default function HeroSection() {
       </p>
 
       <h1
-        className="font-display uppercase leading-none mb-8"
+        className="font-display leading-none mb-8"
         style={{ fontSize: '52px', color: 'var(--text)' }}
       >
         Brand<br />
