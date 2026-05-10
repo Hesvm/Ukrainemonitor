@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="wedge-grad" cx="60%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#FBDC42"/>
+      <stop offset="100%" stop-color="#335BFD"/>
+    </radialGradient>
+  </defs>
+  <!-- Outer dashed ring -->
+  <circle cx="100" cy="100" r="84" fill="none" stroke="#C9CAD0" stroke-width="1.5" stroke-dasharray="7.38 18.45" opacity="0.8"/>
+  <!-- Inner dashed ring -->
+  <circle cx="100" cy="100" r="42" fill="none" stroke="#C9CAD0" stroke-width="1.5" stroke-dasharray="7.38 18.45" opacity="0.57"/>
+  <!-- Lower-left yellow wedge -->
+  <path d="M100,100 L30,140 A70,70 0 0,0 100,170 Z" fill="#FFD500"/>
+  <!-- Upper-right color wedge -->
+  <path d="M100,100 L170,60 A70,70 0 0,0 100,30 Z" fill="url(#wedge-grad)"/>
+  <!-- Center pivot -->
+  <circle cx="100" cy="100" r="14" fill="#292D32"/>
+</svg>

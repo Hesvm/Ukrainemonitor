@@ -1,26 +1,103 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Dystopian';
+  src: url('/assets/fonts/Dystopian-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Dystopian';
+  src: url('/assets/fonts/Dystopian-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Dystopian';
+  src: url('/assets/fonts/Dystopian-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Dystopian';
+  src: url('/assets/fonts/Dystopian-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  src: url('/assets/fonts/DMSans.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  src: url('/assets/fonts/DMSans-Italic.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@theme {
+  /* Fonts */
+  --font-display: 'Dystopian', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+
+  /* Brand colors */
+  --color-blue: #3B6FD4;
+  --color-yellow: #F5C200;
+  --color-charcoal: #292D32;
+  --color-ring: #C9CAD0;
+
+  /* Status colors */
+  --color-live: #E0322B;
+  --color-ok: #2E8B5C;
+  --color-warning: #F5C200;
+  --color-info: #3B6FD4;
+}
+
+/* Light theme (default) */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #F7F7F5;
+  --card: #FFFFFF;
+  --text: #292D32;
+  --text-muted: #888882;
+  --border: #E4E4E0;
+  --bg-hover: #F0F0EE;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Dark theme */
+.dark {
+  --bg: #0C0C0C;
+  --card: #161616;
+  --text: #F0F0EE;
+  --text-muted: #888882;
+  --border: #262626;
+  --bg-hover: #1E1E1E;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  min-height: 100vh;
 }
